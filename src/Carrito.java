@@ -3,43 +3,39 @@ import java.time.LocalDate;
 public class Carrito {
 
     //Atributos
-    private Persona[] persona;
-    private Producto[] producto;
+    private Persona persona;
+    private Producto[] productos;
     private LocalDate fecha;
     private double precio;
 
     //Constructor
-    public Carrito(){
+    public Carrito(Persona persona){
         this.persona = persona;
-        this.producto = producto;
+        this.productos = new Producto[3];
         this.fecha = LocalDate.now();
-        this.precio = precio;
     }
 
     //Metodo
 
-    public Persona[] getPersona() {
+    public Persona getPersona() {
         return persona;
     }
-    public void setPersona(Persona[] persona) {
-        this.persona = persona;
-    }
     public Producto[] getProducto() {
-        return producto;
+        return productos;
     }
     public void setProducto(Producto[] producto) {
-        this.producto = producto;
+        this.productos = producto;
     }
     public LocalDate getFecha() {
         return fecha;
     }
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-    public double getPrecio() {
-        return precio;
-    }
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public double precio() {
+        double precioTotal = 0;
+        for (int i = 0; i < productos.length; i++) {
+            if (productos[i] != null) {
+                precioTotal += productos[i].getPrecio();
+            }
+        }
+        return precioTotal;
     }
 }

@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Persona {
     //Atributos
@@ -8,27 +9,35 @@ public class Persona {
 
 
     //Constructor
-    public Persona(String nombre){
+    public Persona(String nombre, String apellido, LocalDate fechaDeNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     //Metodos
-    public String getNombre(){
+    public String getNombre() {
         return this.nombre;
     }
-    public void setApellido (String apellido){
+
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public String getApellido(){
+
+    public String getApellido() {
         return this.apellido;
     }
-    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento){
+
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
-    public LocalDate getFechaDeNacimiento(){
+
+    public LocalDate getFechaDeNacimiento() {
         return this.fechaDeNacimiento;
     }
-}
 
+    public int Edad() {
+        LocalDate fechaActual = LocalDate.now();
+        return (int) ChronoUnit.YEARS.between(this.fechaDeNacimiento, fechaActual);
+    }
+}
